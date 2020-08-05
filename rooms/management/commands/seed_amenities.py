@@ -4,7 +4,7 @@ from rooms import models as room_models
 
 class Command(BaseCommand):
 
-    help = "this command tells me that he loves me."
+    help = "This command creates amenities"
 
     # print("hello")
 
