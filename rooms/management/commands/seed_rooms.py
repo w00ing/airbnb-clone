@@ -8,7 +8,7 @@ from users import models as user_models
 
 class Command(BaseCommand):
 
-    help = "This command creates many users"
+    help = "This command creates rooms"
 
     # print("hello")
 
