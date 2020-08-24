@@ -8,16 +8,11 @@ from users import models as user_models
 
 class Command(BaseCommand):
 
-    help = "This command creates rooms"
-
-    # print("hello")
+    help = "This command creates amenities"
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--number",
-            default=2,
-            type=int,
-            help="How many users do you want to create?",
+            "--number", default=2, type=int, help="How many rooms you want to create"
         )
 
     def handle(self, *args, **options):
@@ -33,10 +28,10 @@ class Command(BaseCommand):
                 "host": lambda x: random.choice(all_users),
                 "room_type": lambda x: random.choice(room_types),
                 "guests": lambda x: random.randint(1, 20),
-                "price": lambda x: random.randint(0, 300),
-                "beds": lambda x: random.randint(0, 5),
-                "bedrooms": lambda x: random.randint(0, 5),
-                "baths": lambda x: random.randint(0, 5),
+                "price": lambda x: random.randint(1, 300),
+                "beds": lambda x: random.randint(1, 5),
+                "bedrooms": lambda x: random.randint(1, 5),
+                "baths": lambda x: random.randint(1, 5),
             },
         )
         created_photos = seeder.execute()
@@ -52,7 +47,6 @@ class Command(BaseCommand):
                     room=room,
                     file=f"room_photos/{random.randint(1, 31)}.webp",
                 )
-
             for a in amenities:
                 magic_number = random.randint(0, 15)
                 if magic_number % 2 == 0:
@@ -65,5 +59,5 @@ class Command(BaseCommand):
                 magic_number = random.randint(0, 15)
                 if magic_number % 2 == 0:
                     room.house_rules.add(r)
-        self.stdout.write(self.style.SUCCESS(f"{number} Rooms Created!"))
 
+        self.stdout.write(self.style.SUCCESS(f"{number} rooms created!"))
