@@ -1,10 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import Http404
-from django.urls import reverse
+from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView, View
-
-from django_countries import countries
 from . import forms
 from . import models
 
